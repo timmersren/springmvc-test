@@ -15,18 +15,39 @@
 		
 	<!-- 这个配置文件配置的是非注解的Handler、映射器、适配器等，它需要在web.xml中被加载 -->
 	
-	<!--配置处理器映射器,由于该映射器实现了HandlerMapping这个接口，因此当该映射器被加载到spring容器中后会知道它是一个映射器，
-	然后该映射器会根据用户请求的url名称去寻找对应的handler
-	 -->
-	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
-
 	<!--配置handler，urlHandler会根据请求的名称找到这个Handler -->
 	<bean id="itemsHandler1" name="/queryItems.action" class="cn.rain.ssm.controller.ItemsController_1" />
+	<!--配置另一个Handler，他实现了HttpRequestHandler接口，可以被HttpRequestHandlerAdapter执行-->
+    <bean id="itemsHandler2" class="cn.rain.ssm.controller.ItemsController_2"/>
 	
+	<!--配置处理器映射器,由于该映射器实现了HandlerMapping这个接口，因此当该映射器被加载到spring容器中后会知道它是一个映射器，
+	然后该映射器会根据用户请求的url名称去寻找对应的handler-->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+	<!--  -->
 	<!--配置处理器适配器，所有的处理器适配都要实现HandlerAdapter接口，查看源码发现该适配器可以执行实现了Controller接口的Handler
-	当Handler需要被执行的时候，它便会进入此适配器中执行，由于我们编写的Handler实现了Controller接口，因此可以被该视频器执行
-	 -->
+	当Handler需要被执行的时候，它便会进入此适配器中执行，由于我们编写的Handler实现了Controller接口，因此可以被该视频器执行-->
 	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+
+
+
+	<!--配置另一个处理器映射器,由于SimpleUrlHandlerMapping中通过setMappings方法接收Handler,因此我们将handler注入。
+	现在有个问题，我们此时在配置文件中使用了两个映射器，会不会引起冲突？不会的，多个映射器和适配器是可以共存的，当请求过来时候，
+	该用哪个用哪个，比如请求/queryItems.action时就会用BeanNameUrlHandlerMapping，请求/queryItems2.action就会用SimpleUrlHandlerMapping
+	如果两个都能用，那么springmvc内部会有一个默认使用的。 -->
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/queryItems1.action">itemsHandler1</prop>
+				<prop key="/queryItems2.action">itemsHandler1</prop>
+				<prop key="/queryItems3.action">itemsHandler2</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!--配置另一个处理器适配器,要求编写的handler实现HttpRequestHandler接口才能被该适配器执行，同理多个适配器可以共存-->
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
+	
+	
 
 	<!--配置解析jsp的视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />

@@ -19,7 +19,7 @@
 		<init-param>
 			<!-- 配置springMVC配置文件的路径 -->
 			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:springmvc1.xml</param-value>
+			<param-value>classpath:springmvc2.xml</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>

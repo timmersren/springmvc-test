@@ -1,0 +1,30 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+    <!-- 这个配置文件配置的是注解的Handler、映射器、适配器等，它需要在web.xml中被加载 -->
+
+    <!--配置注解的处理器映射器-->
+    <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/> -->
+    <!--配置注解的处理器适配器-->
+    <!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/> -->
+
+    <!-- 使用 mvc:annotation-driven标签可以代替上边注解映射器和注解适配器的配置（即上边的两个配置就可以不写了）
+	mvc:annotation-driven默认加载很多的参数绑定方法，比如json转换解析器就默认加载了，实际开发时使用mvc:annotation-driven。-->
+    <mvc:annotation-driven/>
+
+    <!-- 开启注解扫描，它可以扫描Controller、Service、Repository、Component
+	这里让它扫描Controller，我们来指定Controller注解所在的包（即Handler的包）-->
+    <context:component-scan base-package="cn.rain.ssm.controller"/>
+</beans>
