@@ -16,9 +16,9 @@
 	<!-- 这个配置文件配置的是非注解的Handler、映射器、适配器等，它需要在web.xml中被加载 -->
 	
 	<!--配置handler，urlHandler会根据请求的名称找到这个Handler -->
-	<bean id="itemsHandler1" name="/queryItems.action" class="cn.rain.ssm.controller.ItemsController_1" />
+	<bean id="itemsHandler1" name="/queryItems.action" class="cn.rain.ssm.demo1.controller.ItemsController_1" />
 	<!--配置另一个Handler，他实现了HttpRequestHandler接口，可以被HttpRequestHandlerAdapter执行-->
-    <bean id="itemsHandler2" class="cn.rain.ssm.controller.ItemsController_2"/>
+    <bean id="itemsHandler2" class="cn.rain.ssm.demo1.controller.ItemsController_2"/>
 	
 	<!--配置处理器映射器,由于该映射器实现了HandlerMapping这个接口，因此当该映射器被加载到spring容器中后会知道它是一个映射器，
 	然后该映射器会根据用户请求的url名称去寻找对应的handler-->

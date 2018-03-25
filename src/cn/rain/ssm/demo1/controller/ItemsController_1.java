@@ -1,4 +1,4 @@
-package cn.rain.ssm.controller;
+package cn.rain.ssm.demo1.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-import cn.rain.ssm.model.Items;
+import cn.rain.ssm.demo1.model.Items;
 
 public class ItemsController_1 implements Controller{
 

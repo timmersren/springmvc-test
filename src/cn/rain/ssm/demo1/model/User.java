@@ -1,4 +1,4 @@
-package cn.rain.ssm.model;
+package cn.rain.ssm.demo1.model;
 
 import java.util.Date;
 

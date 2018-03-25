@@ -1,8 +1,8 @@
-package cn.rain.ssm.controller;
+package cn.rain.ssm.demo1.controller;
 
 import org.springframework.web.HttpRequestHandler;
 
-import cn.rain.ssm.model.Items;
+import cn.rain.ssm.demo1.model.Items;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

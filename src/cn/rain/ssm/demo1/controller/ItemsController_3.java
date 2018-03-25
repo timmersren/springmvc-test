@@ -1,10 +1,10 @@
-package cn.rain.ssm.controller;
+package cn.rain.ssm.demo1.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.rain.ssm.model.Items;
+import cn.rain.ssm.demo1.model.Items;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -26,5 +26,5 @@
 
     <!-- 开启注解扫描，它可以扫描Controller、Service、Repository、Component
 	这里让它扫描Controller，我们来指定Controller注解所在的包（即Handler的包）-->
-    <context:component-scan base-package="cn.rain.ssm.controller"/>
+    <context:component-scan base-package="cn.rain.ssm.demo1.controller"/>
 </beans>
